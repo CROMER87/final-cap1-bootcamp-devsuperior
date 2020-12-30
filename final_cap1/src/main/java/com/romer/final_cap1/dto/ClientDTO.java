@@ -13,18 +13,21 @@ import com.romer.final_cap1.entities.Client;
 public class ClientDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String name;
+	
 	
 	@Column(columnDefinition = "TEXT")
+	private String name;
 	private String cpf;
 	private Double income;
+	private Integer children;
+	
+	
+	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Instant birthDate;
-	private Integer children; 
+	 
 	
 	public ClientDTO() {
 		
@@ -41,6 +44,7 @@ public class ClientDTO implements Serializable {
 	
 	public ClientDTO(Client entity) {
 		this.id = entity.getId();
+		this.name = entity.getName();
 		this.cpf = entity.getCpf();
 		this.income = entity.getIncome();
 		this.birthDate = entity.getBirthDate();
